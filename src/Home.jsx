@@ -7,6 +7,7 @@ import {
   BookOpen,
   Phone,
 } from "lucide-react";
+import GroupPhoto from './assets/GroupPhoto.jpg'
 
 function Home() {
   const courses = [
@@ -59,7 +60,7 @@ function Home() {
 
             <div>
               <img
-                src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b"
+                src={GroupPhoto}
                 alt="Paramedical Students"
                 className="rounded-3xl shadow-2xl w-full"
               />
