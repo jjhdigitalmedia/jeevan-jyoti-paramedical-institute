@@ -9,7 +9,7 @@ import JJHLogo from '../assets/JJHLogo.png'
 function Footer() {
   return (
     <footer className="bg-white">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-20 pb-8">
         <div className="grid lg:grid-cols-5 gap-12">
           
           {/* Left Column */}
@@ -57,7 +57,7 @@ function Footer() {
             </div>
 
             {/* CTA Button */}
-            <button className="mt-10 bg-[#C7A04A] hover:bg-[#B58F3F] text-slate-800 px-8 py-5 rounded-full flex items-center gap-3 font-medium shadow-lg transition-all">
+            <button className="mt-10 bg-teal-700 text-white hover:bg-[#B58F3F] text-slate-800 px-8 py-5 rounded-full flex items-center gap-3 font-medium shadow-lg transition-all">
               Apply For Admission
               <ArrowRight size={18} />
             </button>

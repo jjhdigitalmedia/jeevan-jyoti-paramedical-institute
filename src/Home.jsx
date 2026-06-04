@@ -8,6 +8,7 @@ import {
   Phone,
 } from "lucide-react";
 import GroupPhoto from './assets/GroupPhoto.JPG'
+import PhotoDrVandana from './assets/PhotoDrVandana.jpeg'
 
 function Home() {
   const courses = [
@@ -191,7 +192,7 @@ function Home() {
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-3 gap-10 items-center">
           <div>
             <img
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2"
+              src={PhotoDrVandana}
               alt="Director"
               className="rounded-2xl"
             />
