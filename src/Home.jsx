@@ -7,7 +7,7 @@ import {
   BookOpen,
   Phone,
 } from "lucide-react";
-import GroupPhoto from './assets/GroupPhoto.jpg'
+import GroupPhoto from './assets/GroupPhoto.JPG'
 
 function Home() {
   const courses = [
