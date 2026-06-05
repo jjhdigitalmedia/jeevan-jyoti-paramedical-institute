@@ -22,6 +22,8 @@ function NavigationBar() {
     { name: "Home", link: "/" },
     { name: "About", link: "/about" },
     { name: "Courses", link: "/courses" },
+    { name: "Director's Message", link: "/courses" },
+    { name: "Fee Structure", link: "/courses" },
     { name: "Gallery", link: "/gallery" },
   ];
 
@@ -29,7 +31,7 @@ function NavigationBar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-lg"
+          ? "bg-white/85 backdrop-blur-lg shadow-md"
           : "bg-transparent"
       }`}
     >
