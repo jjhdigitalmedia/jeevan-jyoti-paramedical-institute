@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import JJHLogo from "../assets/JJHLogo.png";
+import NavB from "../assets/NavB.jpg";
+import Logo from "../assets/Logo.png";
 
 function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +33,7 @@ function NavigationBar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/85 backdrop-blur-lg shadow-md"
+          ? "bg-white/90 backdrop-blur-lg shadow-md"
           : "bg-transparent"
       }`}
     >
@@ -42,22 +44,22 @@ function NavigationBar() {
             {/* Logo */}
             <div className="flex items-center gap-3">
               <img
-                src={JJHLogo}
+                src={Logo}
                 alt="Logo"
-                className="w-12 h-12 object-contain"
+                className="w-16 h-16 object-contain"
               />
 
               <div>
                 <h2
-                  className={`font-bold text-lg transition-all duration-300 ${
-                    scrolled ? "text-slate-800" : "text-white"
+                  className={`font-bold text-3xl transition-all duration-300 ${
+                    scrolled ? "text-rose-800" : "text-white"
                   }`}
                 >
                   Jeevan Jyoti
                 </h2>
 
                 <p
-                  className={`text-xs transition-all duration-300 ${
+                  className={`text-lg transition-all duration-300 ${
                     scrolled ? "text-teal-700" : "text-gray-200"
                   }`}
                 >

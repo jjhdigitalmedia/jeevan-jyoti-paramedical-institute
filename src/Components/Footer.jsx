@@ -57,7 +57,7 @@ function Footer() {
             </div>
 
             {/* CTA Button */}
-            <button className="mt-10 bg-teal-700 text-white hover:bg-[#B58F3F] text-slate-800 px-8 py-5 rounded-full flex items-center gap-3 font-medium shadow-lg transition-all">
+            <button className="mt-10 bg-teal-700 text-white hover:bg-teal-800 text-slate-800 px-8 py-5 rounded-full flex items-center gap-3 font-medium shadow-lg transition-all">
               Apply For Admission
               <ArrowRight size={18} />
             </button>
@@ -129,7 +129,7 @@ function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[#E6DFC9] mt-16 pt-8 flex flex-col md:flex-row justify-between gap-6">
+        <div className="border-t border-teal-600 mt-16 pt-8 flex flex-col md:flex-row justify-between gap-6">
           <p className="text-slate-500 text-sm">
             © 2026 Jeevan Jyoti Paramedical Institute. All Rights Reserved.
           </p>
