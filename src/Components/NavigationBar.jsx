@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
-import JJHLogo from "../assets/JJHLogo.png";
-import NavB from "../assets/NavB.jpg";
-import Logo from "../assets/Logo.png";
-import LogoWhite from "../assets/LogoWhite.png";
+import LogoPNG from "../assets/LogoPNG.png";
+import LogoPNGWhite from "../assets/LogoPNGWhite.png";
+import { Link } from "react-router-dom";
+
+// import JJHLogo from "../assets/JJHLogo.png";
+// import NavB from "../assets/NavB.jpg";
+// import LogoPNGWhite from "../assets/LogoPNGWhite.png";
 
 function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +26,7 @@ function NavigationBar() {
 
   const navItems = [
     { name: "Home", link: "/" },
-    { name: "About", link: "/about" },
+    { name: "About", link: "about" },
     { name: "Courses", link: "/courses" },
     { name: "Director's Message", link: "/courses" },
     { name: "Fee Structure", link: "/courses" },
@@ -45,12 +48,12 @@ function NavigationBar() {
             <div className="flex items-center gap-3">
               {scrolled ?
                 <img
-                  src={Logo}
+                  src={LogoPNG}
                   alt="Logo"
                   className="w-16 h-16 object-contain"
                 /> :
                 <img
-                  src={LogoWhite}
+                  src={LogoPNGWhite}
                   alt="Logo"
                   className="w-16 h-16 object-contain"/>
                     }
@@ -63,7 +66,7 @@ function NavigationBar() {
                 </h2>
 
                 <p
-                  className={`text-md transition-all duration-300 ${scrolled ? "text-blue-950" : "text-gray-200"
+                  className={`text-md font-semibold transition-all duration-300 ${scrolled ? "text-blue-950" : "text-gray-200"
                     }`}
                 >
                   Paramedical Institute
@@ -75,15 +78,15 @@ function NavigationBar() {
             <ul className="hidden lg:flex items-center gap-10">
               {navItems.map((item) => (
                 <li key={item.name}>
-                  <a
-                    href={item.link}
+                  <Link
+                    to={item.link}
                     className={`font-medium transition-all duration-300 ${scrolled
                         ? "text-slate-700 hover:text-teal-700"
                         : "text-white hover:text-orange-300"
                       }`}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

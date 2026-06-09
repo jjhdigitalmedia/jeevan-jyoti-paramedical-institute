@@ -4,7 +4,7 @@ import {
   //   Linkedin,
   ArrowRight,
 } from "lucide-react";
-import Logo from '../assets/Logo.png'
+import LogoPNG from '../assets/LogoPNG.png'
 
 function Footer() {
   return (
@@ -16,7 +16,7 @@ function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3">
               <img
-                src={Logo}
+                src={LogoPNG}
                 alt="Jeevan Jyoti"
                 className="w-16 h-16"
               />

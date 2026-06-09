@@ -1,12 +1,16 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from './assets/vite.svg'
+// import heroImg from './assets/hero.png'
 import './App.css'
 import Home from './Home'
 import NavigationBar from './Components/NavigationBar'
 import Footer from './Components/Footer'
 import { Helmet } from 'react-helmet-async'
+// import main from './main.jsx';
+
+import { Link, Outlet }
+  from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,9 +26,15 @@ function App() {
         <meta property="og:site_name" content="Jeevan Jyoti Paramedical Institute"></meta>
         <meta name="application-name" content="Jeevan Jyoti Paramedical Institute"></meta>
       </Helmet>
-      {/* <div>hello</div> */}
+
       <NavigationBar />
-      <Home />
+
+      <main id='main-content'>
+        <Outlet />
+      </main>
+
+      {/* <Home /> */}
+
       <Footer />
     </>
   )

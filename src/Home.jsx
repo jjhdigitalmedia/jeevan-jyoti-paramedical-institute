@@ -15,10 +15,10 @@ function Home() {
   const courses = [
     "DMLT",
     "OT Technician",
-    "X-Ray Technician",
-    "GNM",
-    "ANM",
-    "Physiotherapy",
+    // "X-Ray Technician",
+    // "GNM",
+    // "ANM",
+    // "Physiotherapy",
   ];
 
   const stats = [
@@ -31,7 +31,7 @@ function Home() {
   return (
     <div className="bg-white">
       {/* HERO SECTION */}
-      <section className="bg-gradient-to-t from-blue-950 to-cyan-800 text-white Background">
+      <section className="bg-gradient-to-t from-blue-950 rounded-b-4xl md:rounded-none to-cyan-800 text-white Background">
         {/* <video
           autoPlay
           loop
@@ -145,7 +145,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-14">
+          <div className="grid md:grid-cols-2 gap-8 mt-14">
             {courses.map((course, index) => (
               <div
                 key={index}
