@@ -1,29 +1,35 @@
 import {
-//   Facebook,
-//   Instagram,
-//   Linkedin,
+  //   Facebook,
+  //   Instagram,
+  //   Linkedin,
   ArrowRight,
 } from "lucide-react";
-import JJHLogo from '../assets/JJHLogo.png'
+import Logo from '../assets/Logo.png'
 
 function Footer() {
   return (
     <footer className="bg-white">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-20 pb-8">
+      <div className="max-w-[1800px] mx-auto px-6 lg:px-12 pt-20 pb-8">
         <div className="grid lg:grid-cols-5 gap-12">
-          
+
           {/* Left Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3">
               <img
-                src={JJHLogo}
+                src={Logo}
                 alt="Jeevan Jyoti"
-                className="w-10 h-10"
+                className="w-16 h-16"
               />
 
-              <h3 className="text-xl font-medium text-slate-700">
-                Jeevan Jyoti Institute
-              </h3>
+              <div className="flex-col">
+
+                <h3 className="text-3xl underline font-bold text-rose-800">
+                  Jeevan Jyoti
+                </h3>
+                <p className="text-lg font-medium text-blue-900">
+                  Paramedical Institute
+                </p>
+              </div>
             </div>
 
             <p className="mt-8 text-slate-500 leading-8">
@@ -57,7 +63,7 @@ function Footer() {
             </div>
 
             {/* CTA Button */}
-            <button className="mt-10 bg-teal-700 text-white hover:bg-teal-800 text-slate-800 px-8 py-5 rounded-full flex items-center gap-3 font-medium shadow-lg transition-all">
+            <button className="mt-10 bg-blue-900 text-white hover:bg-teal-800 text-slate-800 px-8 py-5 rounded-full flex items-center gap-3 font-medium shadow-lg transition-all">
               Apply For Admission
               <ArrowRight size={18} />
             </button>
@@ -129,7 +135,7 @@ function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-teal-600 mt-16 pt-8 flex flex-col md:flex-row justify-between gap-6">
+        <div className="border-t border-blue-900 mt-16 pt-8 flex flex-col md:flex-row justify-between gap-6">
           <p className="text-slate-500 text-sm">
             © 2026 Jeevan Jyoti Paramedical Institute. All Rights Reserved.
           </p>

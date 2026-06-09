@@ -3,6 +3,7 @@ import { Menu, X, Phone } from "lucide-react";
 import JJHLogo from "../assets/JJHLogo.png";
 import NavB from "../assets/NavB.jpg";
 import Logo from "../assets/Logo.png";
+import LogoWhite from "../assets/LogoWhite.png";
 
 function NavigationBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,37 +32,39 @@ function NavigationBar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
           ? "bg-white/90 backdrop-blur-lg shadow-md"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <nav>
         <div className="w-full px-5 lg:px-16">
           <div className="h-20 flex items-center justify-between">
-            
+
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <img
-                src={Logo}
-                alt="Logo"
-                className="w-16 h-16 object-contain"
-              />
-
+              {scrolled ?
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className="w-16 h-16 object-contain"
+                /> :
+                <img
+                  src={LogoWhite}
+                  alt="Logo"
+                  className="w-16 h-16 object-contain"/>
+                    }
               <div>
                 <h2
-                  className={`font-bold text-3xl transition-all duration-300 ${
-                    scrolled ? "text-rose-800" : "text-white"
-                  }`}
+                  className={`font-bold text-3xl underline transition-all duration-300 ${scrolled ? "text-rose-800" : "text-white"
+                    }`}
                 >
                   Jeevan Jyoti
                 </h2>
 
                 <p
-                  className={`text-lg transition-all duration-300 ${
-                    scrolled ? "text-teal-700" : "text-gray-200"
-                  }`}
+                  className={`text-md transition-all duration-300 ${scrolled ? "text-blue-950" : "text-gray-200"
+                    }`}
                 >
                   Paramedical Institute
                 </p>
@@ -74,11 +77,10 @@ function NavigationBar() {
                 <li key={item.name}>
                   <a
                     href={item.link}
-                    className={`font-medium transition-all duration-300 ${
-                      scrolled
+                    className={`font-medium transition-all duration-300 ${scrolled
                         ? "text-slate-700 hover:text-teal-700"
-                        : "text-white hover:text-yellow-400"
-                    }`}
+                        : "text-white hover:text-orange-300"
+                      }`}
                   >
                     {item.name}
                   </a>
@@ -89,11 +91,10 @@ function NavigationBar() {
             {/* Contact Button */}
             <a
               href="/contact"
-              className={`hidden lg:flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-300 ${
-                scrolled
-                  ? "bg-teal-700 text-white hover:bg-teal-800"
+              className={`hidden lg:flex items-center gap-2 px-5 py-2 rounded-xl transition-all duration-300 ${scrolled
+                  ? "bg-blue-950 text-white hover:bg-teal-800"
                   : "bg-white text-slate-800 hover:bg-gray-100"
-              }`}
+                }`}
             >
               <Phone size={18} />
               Contact Us
@@ -102,9 +103,8 @@ function NavigationBar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden transition-all duration-300 ${
-                scrolled ? "text-slate-800" : "text-white"
-              }`}
+              className={`lg:hidden transition-all duration-300 ${scrolled ? "text-slate-800" : "text-white"
+                }`}
             >
               {isOpen ? <X size={30} /> : <Menu size={30} />}
             </button>
@@ -113,24 +113,21 @@ function NavigationBar() {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-500 ${
-            isOpen
+          className={`lg:hidden overflow-hidden transition-all duration-500 ${isOpen
               ? "max-h-screen opacity-100"
               : "max-h-0 opacity-0"
-          } ${
-            scrolled
+            } ${scrolled
               ? "bg-white/95 backdrop-blur-lg"
               : "bg-black/70 backdrop-blur-lg"
-          }`}
+            }`}
         >
           <div className="px-8 py-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.link}
-                className={`block py-3 text-lg ${
-                  scrolled ? "text-slate-700" : "text-white"
-                }`}
+                className={`block py-3 text-lg ${scrolled ? "text-slate-700" : "text-white"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -139,7 +136,7 @@ function NavigationBar() {
 
             <a
               href="/contact"
-              className="mt-4 block text-center bg-teal-700 text-white py-3 rounded-xl"
+              className="mt-4 block text-center bg-blue-900 text-white py-3 rounded-xl"
             >
               Contact Us
             </a>
@@ -148,4 +145,4 @@ function NavigationBar() {
       </nav>
     </header>
   );
-}export default NavigationBar
+} export default NavigationBar
