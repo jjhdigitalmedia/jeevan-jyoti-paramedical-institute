@@ -6,11 +6,16 @@ import Home from './Home.jsx'
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import About from './Pages/About.jsx'
+import Courses from './Pages/Courses.jsx'
+import { Contact } from 'lucide-react'
+import DirectorsMessage from './Pages/DirectorsMessage.jsx'
+import FeeStructure from './Pages/FeeStructure.jsx'
+import Gallery from './Pages/Gallery.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <> <App /></>,
+    element: <><App /></>,
     children: [
       {
         path: '',
@@ -19,6 +24,26 @@ const router = createBrowserRouter([
       {
         path: 'about',
         element: <About />,
+      },
+      {
+        path: 'courses',
+        element: <Courses />,
+      },
+      {
+        path: 'about',
+        element: <Contact />,
+      },
+      {
+        path: 'directors-message',
+        element: <DirectorsMessage />,
+      },
+      {
+        path: 'fees-structure',
+        element: <FeeStructure />,
+      },
+      {
+        path: 'gallery',
+        element: <Gallery />,
       }
     ]
 

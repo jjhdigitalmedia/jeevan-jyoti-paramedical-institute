@@ -28,8 +28,8 @@ function NavigationBar() {
     { name: "Home", link: "/" },
     { name: "About", link: "about" },
     { name: "Courses", link: "/courses" },
-    { name: "Director's Message", link: "/courses" },
-    { name: "Fee Structure", link: "/courses" },
+    { name: "Director's Message", link: "/directors-message" },
+    { name: "Fee Structure", link: "/fees-structure" },
     { name: "Gallery", link: "/gallery" },
   ];
 
