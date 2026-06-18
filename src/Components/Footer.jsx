@@ -78,11 +78,6 @@ function Footer() {
             <ul className="space-y-4 text-slate-600">
               <li>DMLT</li>
               <li>OT Technician</li>
-              <li>X-Ray Technician</li>
-              <li>GNM</li>
-              <li>ANM</li>
-              <li>Physiotherapy</li>
-              <li>Lab Assistant</li>
             </ul>
           </div>
 
@@ -97,7 +92,6 @@ function Footer() {
               <li>Library</li>
               <li>Smart Classes</li>
               <li>Practical Training</li>
-              <li>Computer Lab</li>
               <li>Campus Activities</li>
             </ul>
           </div>
@@ -111,7 +105,6 @@ function Footer() {
             <ul className="space-y-4 text-slate-600">
               <li>Home</li>
               <li>About</li>
-              <li>Courses</li>
               <li>Gallery</li>
               <li>Admissions</li>
               <li>Contact</li>
@@ -125,10 +118,10 @@ function Footer() {
             </h4>
 
             <ul className="space-y-5 text-slate-600">
-              <li>+91 98765 43210</li>
-              <li>+91 98765 43211</li>
+              <li>+91 7080103623</li>
+              <li>+91 7705910030</li>
               <li>WhatsApp Us</li>
-              <li>info@jjpi.in</li>
+              <li>jeevanjyotiparainst162@gmail.com</li>
               <li>Prayagraj, Uttar Pradesh</li>
             </ul>
           </div>

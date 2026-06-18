@@ -137,12 +137,12 @@ function NavigationBar() {
               </a>
             ))}
 
-            <a
-              href="/contact"
+            <Link
+              to="contact"
               className="mt-4 block text-center bg-blue-900 text-white py-3 rounded-xl"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </nav>

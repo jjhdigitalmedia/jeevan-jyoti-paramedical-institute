@@ -7,7 +7,7 @@ import Home from './Home.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import About from './Pages/About.jsx'
 import Courses from './Pages/Courses.jsx'
-import { Contact } from 'lucide-react'
+import Contact from './Pages/Contact.jsx'
 import DirectorsMessage from './Pages/DirectorsMessage.jsx'
 import FeeStructure from './Pages/FeeStructure.jsx'
 import Gallery from './Pages/Gallery.jsx'
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <Courses />,
       },
       {
-        path: 'about',
+        path: 'contact',
         element: <Contact />,
       },
       {
