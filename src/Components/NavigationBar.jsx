@@ -99,8 +99,8 @@ function NavigationBar() {
                   : "bg-white text-slate-800 hover:bg-gray-100"
                 }`}
             >
-              <Phone size={18} />
-              Contact Us
+              {/* <Phone size={18} /> */}
+              Apply for Admission
             </a>
 
             {/* Mobile Menu Button */}

@@ -1,68 +1,40 @@
 import { useState } from "react";
 
-const departments = [
-  { icon: "🧪", name: "Lab Technology", ext: "Ext. 101" },
-  { icon: "🏃", name: "Physiotherapy", ext: "Ext. 102" },
-  { icon: "📡", name: "Radiology", ext: "Ext. 103" },
-  { icon: "🎓", name: "Admissions", ext: "Ext. 100" },
-];
+export default function Contact() {
+  const [photo, setPhoto] = useState(null);
+  const [error, setError] = useState("");
 
-const officeHours = [
-  { day: "Monday – Saturday", time: "9:00 AM – 5:00 PM", open: true },
-  { day: "Sunday", time: "Closed", open: false },
-  { day: "Admission Helpline", time: "8:00 AM – 7:00 PM", open: true },
-];
+  const handlePhoto = (e) => {
+    const file = e.target.files[0];
 
-export default function ContactPage() {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+    if (!file) return;
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const allowed = ["image/jpeg", "image/jpg", "image/png"];
+
+    if (!allowed.includes(file.type)) {
+      setError("Only JPG, JPEG, PNG allowed");
+      return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+      setError("Photo size must be under 2MB");
+      return;
+    }
+
+    setError("");
+    setPhoto(URL.createObjectURL(file));
   };
 
-  const handleSubmit = () => {
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+
+  const generateCaptcha = () => {
+    return Math.random().toString(36).substring(2, 8).toUpperCase();
   };
+
+  const [captcha, setCaptcha] = useState(generateCaptcha());
 
   return (
-    <div className="min-h-screen bg-slate-100 font-sans">
-
-      {/* Navbar */}
-      {/* <nav className="bg-[#0A1628] px-7 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-[#D4A017] flex items-center justify-center text-[#0A1628] text-lg font-bold">
-            ❤️
-          </div>
-          <div>
-            <p className="text-white text-sm font-semibold leading-tight">Jeevan Jyoti</p>
-            <p className="text-[#D4A017]/60 text-xs">Paramedical Institute</p>
-          </div>
-        </div>
-        <div className="flex gap-6">
-          {["Home", "Courses", "About", "Contact"].map((item) => (
-            <a
-              key={item}
-              href="#"
-              className={`text-sm ${
-                item === "Contact" ? "text-[#D4A017]" : "text-slate-400 hover:text-[#D4A017]"
-              } transition-colors`}
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-      </nav> */}
-
-      {/* Hero */}
+    <>
+      {/* <div className="min-h-screen bg-slate-100 font-sans"> */}
       <div className="bg-gradient-to-t from-blue-950 to-cyan-800 px-7 py-12 pt-32 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-64 h-64 rounded-full bg-[#1A7A8A]/10 -translate-y-1/3 translate-x-1/4" />
         <div className="absolute right-16 bottom-0 w-40 h-40 rounded-full bg-[#D4A017]/10 translate-y-1/2" />
@@ -84,206 +56,406 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Body */}
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-5 p-6">
 
-        {/* Left Column */}
-        <div className="flex flex-col gap-4">
+      <div className="min-h-screen bg-gray-100 py-10 px-4">
+        <div className="mb-8">
+          <h1 className="text-4xl text-blue-900 font-bold text-center">
+            Admission Form
+          </h1>
 
-          {/* Contact Info */}
-          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-            <div className="bg-blue-950 px-5 py-4 flex items-center gap-3">
-              <span className="text-[#D4A017] text-lg">📍</span>
-              <span className="text-white text-xs font-semibold uppercase tracking-wider">Contact Details</span>
+          <p className="text-center text-sm text-gray-500 mt-2">
+            Fill in BLOCK LETTERS using blue/black pen style format
+          </p>
+        </div>
+        <form className="max-w-11/12 mx-auto bg-white shadow-xl rounded-xl p-8">
+
+
+          {/* Course */}
+          <div className="flex justify-around items-center gap-5 mb-6">
+            <div className="flex-col ">
+              <lable className='mr-5 block font-semibold mb-2'>Courses Applied for<span className="text-red-600 ml-1">*</span></lable>
+              <select
+                name="Course Applied for"
+                className="w-ful border rounded-md px-3 py- h-10 outline-none focus:ring-2 focus:ring-blue-700"
+              >
+                <option value="DMLT">DMLT</option>
+                <option value="CBSE">OT Technician</option>
+              </select>
             </div>
-            {[
-              { icon: "🏢", label: "Address", value: "Civil Lines, Prayagraj\nUttar Pradesh – 211001" },
-              { icon: "📞", label: "Phone", value: "+91 9876 543 210\n+91 9876 543 211" },
-              { icon: "✉️", label: "Email", value: "info@jeevanparamedical.in" },
-            ].map((item, i) => (
-              <div key={i} className="flex items-start gap-4 px-5 py-4 border-b border-slate-100 last:border-0">
-                <div className="w-10 h-10 rounded-xl bg-[#E8F4F6] flex items-center justify-center text-lg shrink-0">
-                  {item.icon}
-                </div>
-                <div>
-                  <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">{item.label}</p>
-                  <p className="text-sm text-slate-800 font-medium leading-relaxed whitespace-pre-line">{item.value}</p>
-                </div>
-              </div>
-            ))}
-            <div className="mx-5 mb-4 bg-[#E8F4F6] rounded-xl border border-[#1A7A8A]/20 h-24 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#d0e9ec] transition-colors">
-              <span className="text-[#1A7A8A] text-lg">🗺️</span>
-              <span className="text-[#1A7A8A] text-sm font-medium">View on Google Maps →</span>
-            </div>
+            <Input label="Year For Exam Batch" />
+            <Input type="" label="Session" placeholder="2026 - 2027" />
           </div>
 
-          {/* Office Hours */}
-          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-            <div className="bg-blue-950 px-5 py-4 flex items-center gap-3">
-              <span className="text-[#D4A017] text-lg">🕐</span>
-              <span className="text-white text-xs font-semibold uppercase tracking-wider">Office Hours</span>
+          {/* Personal Info */}
+          <div className="borde rounded-xl p-6">
+
+            <div className="flex justify-between items-center bg-blue-900 text-white pl-5 py-2 rounded-md mb-6">
+              <h2 className="text-xl font-semibold">
+                Personal Information
+              </h2>
+
+
             </div>
-            {officeHours.map((row, i) => (
-              <div key={i} className="flex items-center justify-between px-5 py-3 border-b border-slate-100 last:border-0">
-                <span className="text-sm text-slate-500">{row.day}</span>
-                {row.open ? (
-                  <span className="bg-[#E8F4F6] text-[#1A7A8A] text-xs font-medium px-3 py-1 rounded-full">{row.time}</span>
+
+            <div className="grid md:grid-cols-2 gap-5">
+              <lable className="uppercase font-semibold">Name<span className="text-red-600 ml-1">*</span>
+                <Input className='uppercase' />
+              </lable>
+              <Input label="Father's / Guardian's Name" />
+
+              <Input label="Mother's Name" />
+              <Input label="Date of Birth" type="date" />
+
+              <div>
+                <label className="font-medium block mb-2">
+                  Gender
+                </label>
+
+                <div className="flex gap-6">
+                  <Radio text="Male" />
+                  <Radio text="Female" />
+                </div>
+              </div>
+
+              <Input label="Nationality" />
+
+              <Input label="Religion" />
+              <Input label="Caste" />
+
+            </div>
+
+            <div className="mt-6">
+
+              <label className="font-medium block mb-2">
+                Category
+              </label>
+
+              <div className="flex flex-wrap gap-6">
+
+                <Radio type="radio" text="General" />
+                <Radio type="radio" text="SC" />
+                <Radio type="radio" text="OBC" />
+                <Radio type="radio" text="Others" />
+
+              </div>
+            </div>
+
+            <div className="mt-6">
+
+              <label className="font-medium block mb-2">
+                Marital Status
+              </label>
+
+              <div className="flex flex-wrap gap-6">
+                <Radio type="radio" text="Single" />
+                <Radio type="radio" text="Married" />
+                <Radio type="radio" text="Widow" />
+                <Radio type="radio" text="Divorced" />
+              </div>
+
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-5 mt-6">
+              <TextArea label="Present Address" />
+              <Input label="PIN Code" />
+
+              <Input label="Mobile No." />
+              <Input label="Alternate Mobile No." />
+
+              <Input label="E-Mail Address" />
+              <Input label="Blood Group" />
+
+              <Input label="Father's Mobile No." />
+              <Input label="Occupation" />
+            </div>
+
+            <div className="mt-6">
+              <Input label="Father's Yearly Income" />
+            </div>
+
+          </div>
+
+
+          {/* ........... */}
+
+          <div>
+            <label className="cursor-pointer">
+              <div className="w-32 h-40 border-2 my-5 border-dashed rounded-lg overflow-hidden flex items-center justify-center bg-gray-50">
+
+                {photo ? (
+                  <img
+                    src={photo}
+                    alt="passport"
+                    className="w-full h-full object-cover"
+                  />
                 ) : (
-                  <span className="text-red-400 text-xs font-medium">{row.time}</span>
+                  <span className="text-xs text-center px-2">
+                    Attach Passport Photo
+                    <br />
+                    JPG / PNG
+                    <br />
+                    Under 2 MB
+                  </span>
                 )}
               </div>
-            ))}
+
+              <input
+                type="file"
+                className="hiddn"
+                accept=".jpg,.jpeg,.png"
+                onChange={handlePhoto}
+              />
+            </label>
+
+            {error && (
+              <p className="text-red-500 text-xs mt-2">
+                {error}
+              </p>
+            )}
+          </div>
+          {/* <div className="mt-10 bg-white rounded-xl p-6"> */}
+          <div className="bg-blue-900 py-2 pl-3 my-5 rounded-md text-white">
+
+            <h2 className="text-xl font-semibold">
+              Details of Qualifying Examination
+            </h2>
           </div>
 
-          {/* Departments */}
-          
-          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-            <div className="bg-blue-950 px-5 py-4 flex items-center gap-3">
-              <span className="text-[#D4A017] text-lg">🩺</span>
-              <span className="text-white text-xs font-semibold uppercase tracking-wider">Departments</span>
-            </div>
-            <div className="grid grid-cols-2 gap-3 p-4">
-              {departments.map((dept, i) => (
-                <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-3 hover:bg-[#E8F4F6] hover:border-[#1A7A8A]/30 transition-all cursor-pointer">
-                  <span className="text-xl block mb-2">{dept.icon}</span>
-                  <p className="text-sm text-slate-800 font-medium">{dept.name}</p>
-                  <p className="text-xs text-slate-400">{dept.ext}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+          <div className="overflow-x-auto">
 
-        {/* Right Column — Form */}
-        <div>
-          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-            <div className="bg-blue-950 px-6 py-5">
-              <h2 className="text-white text-lg font-semibold mb-1">Send Us a Message</h2>
-              <p className="text-slate-400 text-sm">Get in touch — we will respond within 24 hours</p>
-            </div>
-            <div className="p-6">
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                {[
-                  { name: "firstName", label: "First Name", placeholder: "Rahul" },
-                  { name: "lastName", label: "Last Name", placeholder: "Sharma" },
-                ].map((f) => (
-                  <div key={f.name}>
-                    <label className="block text-xs font-medium text-slate-500 uppercase tracking-wide mb-1.5">{f.label}</label>
+            <table className="w-full border">
+              <thead className="bg-gray-100">
+                <tr>
+
+                  {[
+                    "Exam",
+                    "Board",
+                    "School / College",
+                    "Year",
+                    "Subject",
+                    "Maximum Marks",
+                    "Marks Obtained",
+                    "Aggregate %",
+                  ].map((item) => (
+                    <th
+                      key={item}
+                      className="border p-3 text-sm"
+                    >
+                      {item}
+                    </th>
+                  ))}
+
+                </tr>
+              </thead>
+              <tbody>
+
+                {["10th", "12th", "Any Other"].map(
+                  (exam) => (
+                    <tr key={exam}>
+
+                      <td className="border p-2">
+                        {exam}
+                      </td>
+
+                      {Array(7)
+                        .fill("")
+                        .map((_, i) => (
+                          <td
+                            key={i}
+                            className="border p-2"
+                          >
+                            <input
+                              className="w-full outline-none"
+                            />
+                          </td>
+                        ))}
+
+                    </tr>
+                  )
+                )}
+
+              </tbody>
+            </table>
+          </div>
+
+          {/* </div> */}
+
+
+          {/* <div className="mt-10 bg-white rounded-xl p-6"> */}
+
+
+
+          <div className="grid md:grid-cols-2 gap-5 mt-8">
+
+            <Input label="Place" />
+
+            <Input
+              label="Date"
+              type="date"
+            />
+
+          </div>
+
+          {/* </div> */}
+
+          {/* <div className="mt-10 bg-white rounded-xl p-6"> */}
+
+          <h2 className="text-xl font-semibold mb-6">
+            Check List of Papers Submitted
+          </h2>
+
+          <div className="space-y-4">
+
+            {[
+              "Date of Birth Certificate (High School) Coloured Copy",
+              "10+2 Examination Certificate & Marksheet Coloured Copy",
+              "Certificate Extra Curricular Activities",
+              "Character Certificate",
+              "Passport Size Coloured Photo",
+              "Declaration by Candidate",
+              "Declaration by Parent / Guardian",
+              "Cash / Bank Draft Details",
+              "Income Certificate",
+              "Aadhar Card Coloured Copy",
+            ].map((doc, i) => (
+
+              <div key={i} className="flex justify-between border-b pb-3">
+
+                <span>{i + 1}. {doc}</span>
+
+                <div className="flex gap-6">
+                  <label>
+                    <input type="radio" name={`doc${i}`} />
+                    {" "}
+                    Yes
+                  </label>
+
+                  <label>
                     <input
-                      name={f.name}
-                      value={form[f.name]}
-                      onChange={handleChange}
-                      placeholder={f.placeholder}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-[#1A7A8A] focus:bg-white focus:ring-2 focus:ring-[#1A7A8A]/10 transition"
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="mb-4">
-                <label className="block text-xs font-medium text-slate-500 uppercase tracking-wide mb-1.5">Email Address</label>
-                <input
-                  name="email"
-                  type="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="rahul@example.com"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-[#1A7A8A] focus:bg-white focus:ring-2 focus:ring-[#1A7A8A]/10 transition"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label className="block text-xs font-medium text-slate-500 uppercase tracking-wide mb-1.5">Mobile Number</label>
-                <input
-                  name="phone"
-                  type="tel"
-                  value={form.phone}
-                  onChange={handleChange}
-                  placeholder="+91 98765 43210"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-[#1A7A8A] focus:bg-white focus:ring-2 focus:ring-[#1A7A8A]/10 transition"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label className="block text-xs font-medium text-slate-500 uppercase tracking-wide mb-1.5">Subject</label>
-                <select
-                  name="subject"
-                  value={form.subject}
-                  onChange={handleChange}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-[#1A7A8A] focus:bg-white focus:ring-2 focus:ring-[#1A7A8A]/10 transition appearance-none"
-                >
-                  <option value="">Select a topic...</option>
-                  <option>Admission Enquiry</option>
-                  <option>Course Details</option>
-                  <option>Fee Structure</option>
-                  <option>Scholarship</option>
-                  <option>Placements</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div className="mb-5">
-                <label className="block text-xs font-medium text-slate-500 uppercase tracking-wide mb-1.5">Your Message</label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={4}
-                  placeholder="Write your question or message here..."
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-[#1A7A8A] focus:bg-white focus:ring-2 focus:ring-[#1A7A8A]/10 transition resize-none"
-                />
-              </div>
-
-              <button
-                onClick={handleSubmit}
-                className="w-full bg-gradient-to-t from-blue-950 to-cyan-800 hover:bg-[#1A7A8A] text-white font-semibold text-sm rounded-xl py-3.5 transition-all duration-200 flex items-center justify-center gap-2 hover:-translate-y-0.5"
-              >
-                Send Message
-              </button>
-
-              {submitted && (
-                <div className="mt-4 bg-[#E8F4F6] border border-[#1A7A8A]/30 rounded-xl p-4 text-center">
-                  <p className="text-2xl mb-1">✅</p>
-                  <p className="text-[#1A7A8A] text-sm font-medium">
-                    Message received! We will get back to you within 24 hours.
-                  </p>
+                      type="radio"
+                      name={`doc${i}`}
+                    />{" "}
+                    No
+                  </label>
                 </div>
-              )}
-
-              <div className="flex items-center gap-3 my-5">
-                <div className="flex-1 h-px bg-slate-200" />
-                <span className="text-xs text-slate-400">Or connect with us directly</span>
-                <div className="flex-1 h-px bg-slate-200" />
               </div>
+            ))}
 
-              <div className="flex gap-3 justify-center">
-                {[
-                  { label: "Facebook", icon: "📘" },
-                  { label: "Instagram", icon: "📸" },
-                  { label: "YouTube", icon: "▶️" },
-                  { label: "WhatsApp", icon: "💬" },
-                ].map((s) => (
-                  <a
-                    key={s.label}
-                    href="#"
-                    title={s.label}
-                    className="w-10 h-10 bg-slate-100 hover:bg-[#E8F4F6] rounded-lg flex items-center justify-center text-lg transition-colors"
-                  >
-                    {s.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
-        </div>
-      </div>
+          <h2 className="text-xl font-semibold text-center mb-6">
+            DECLARATION
+          </h2>
+          <div className="flex items-center">
 
-      {/* Footer */}
-      {/* <div className="bg-[#0A1628] text-center py-4 px-7 mt-4">
-        <p className="text-slate-500 text-xs">
-          © 2025 <span className="text-[#D4A017]">Jeevan Jyoti Paramedical Institute</span> · Prayagraj, Uttar Pradesh · All rights reserved
-        </p>
-      </div> */}
+            <input
+              type="checkbox"
+              id="agree"
+              className="w-4 h-4 mx-4 accent-blue-600 cursor-pointer"
+            />
+            <label htmlFor="agree" className="text-gray-700 leading-8">
+
+              We further solemnly affirm and declare that the contents
+              submitted at the time of admission are true and correct
+              to the best of my knowledge.
+
+            </label>
+          </div>
+          <div className="flex items-center justify-center mt-5 gap-3">
+            <span>Please Enter the Captha</span>
+            {/* Captcha */}
+            <div className="px-4 py-2 bg-gray-100 border rounded-md font-bold tracking-widest select-none">
+              {captcha}
+            </div>
+
+            {/* Refresh */}
+            <button
+              type="button"
+              onClick={() => setCaptcha(generateCaptcha())}
+              className="px-3 py-2 border rounded-md hover:bg-gray-100"
+            >
+              ↻
+            </button>
+
+            {/* Input */}
+            <input
+              type="text"
+              placeholder="Enter Captcha"
+              className="border rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+          </div>
+          <button
+            className="mt-8 w-80 bg-orange-500 mx-auto text-center hover:bg-blue-700 text-white py-3 rounded-lg"
+          >
+            Submit Admission Form
+          </button>
+
+
+          {/* </div> */}
+        </form>
+      </div>
+    </>
+  );
+}
+
+function Input({
+  label,
+  type = "text",
+  placeholder = "",
+}) {
+  return (
+    <div>
+      <label className="block mb-2 font-medium">
+        {label}
+      </label>
+
+      <input
+        type={type}
+        placeholder={placeholder}
+        className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
     </div>
   );
 }
+
+function TextArea({ label }) {
+  return (
+    <div className="md:col-span-2">
+      <label className="block mb-2 font-medium">
+        {label}
+      </label>
+
+      <textarea
+        rows="3"
+        className="w-full border rounded-lg p-3"
+      />
+    </div>
+  );
+}
+
+function Radio({ text }) {
+  return (
+    <label className="flex items-center gap-2">
+      <input type="radio" name="gender" />
+      {text}
+    </label>
+  );
+}
+
+function Check({ text }) {
+  return (
+    <label className="flex items-center gap-2">
+      <input type="checkbox" />
+      {text}
+    </label>
+  );
+}
+
+
+
+
+
+
+
+
+
